@@ -23,14 +23,13 @@ const check_location = async (LATITUDE, LONGITUDE) => {
 }
 
 // get Air Quality data by Date
-const GetAirQualityByDate = asyncHnadler( async (req, res) => {
-    if(!req.body.Date)
+const LowestAirQualityDate = asyncHnadler( async (req, res) => {
+    const airs = await IQAIR.find().sort({"aqicn" :-1}).limit(1)
+    if (airs == [])
     {
-        res.status(400).json({message: "Please pass the \"Date\" "})
-        throw new Error("User diden't pass param")
+        res.status(500).json({"error": "no data in the database"})
     }
-    const airs = await IQAIR.find({Date: req.body.Date})
-    res.status(200).json(airs)
+    res.status(200).json(airs[0].Date)
 })
 
 // save the Air Quality of the closest city to database
@@ -54,13 +53,11 @@ const AirQuality = asyncHnadler( async (req, res) => {
         "Time": time,
         "Pollution" : air.data.current["pollution"]
     }
-    console.log(typeof(save))
     air = await IQAIR.create(save)
-
     res.status(200).json(ret)
 })
 
 module.exports = {
     AirQuality,
-    GetAirQualityByDate
+    LowestAirQualityDate
 }
