@@ -1,0 +1,30 @@
+{
+  "name": "yassir_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "API.js",
+  "scripts": {
+    "server": "node API.js",
+    "start": "nodemon API.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdou-Hidoussi/YASSIR_Test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abdou-Hidoussi/YASSIR_Test/issues"
+  },
+  "homepage": "https://github.com/Abdou-Hidoussi/YASSIR_Test#readme",
+  "dependencies": {
+    "date-format": "^4.0.14",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.8.0",
+    "node-fetch": "^2.6.7",
+    "nodemon": "^2.0.20"
+  }
+}
